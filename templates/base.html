@@ -23,6 +23,8 @@
         {% endblock %}
 
         {% block corejs %}
+        <!--Font awesome-->
+        <script src="https://kit.fontawesome.com/032f9bfe1a.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>
@@ -41,7 +43,66 @@
     </head>
 
     <body>
-        <header class="container-fluid fixed-top"></header>
+        <header class="container-fluid fixed-top">
+            <div class="row">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                    <a class="nav-link main-logo-link" href="{% url 'home' %}">
+                        <h2 class="logo-font text-black my-0">Your Bookshelf</h2></a>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <form action="" method="GET">
+                        <div class="input-group w-100">
+                            <input type="text" name="a" placeholder="Search Our Site">
+                            <div class="input-group-append">
+                                <button type="submit" class="form-control btn btn-black border border-black rounded-0">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                        <li class="list-inline-item dropdown">
+                            <a href="#" class="text-black nav-link" id="user-options" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                <div class="text-center">
+                                    <div><i class="fa-regular fa-user"></i></div>
+                                    <p class="my-0">My Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <a class="dropdown-item" href="">Product Management</a>
+                                    {% endif %}
+                                    <a class="dropdown-item" href="">My Profile</a>
+                                    <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                                    <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} navlink">
+                                <div class="text-center">
+                                    <div><i class="fa-solid fa-basket-shopping"></i></div>
+                                    <p class="my-0">
+                                        {% if grand_total %}
+                                            ${{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            $0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
 
         {% if messages %}
         <div class="message-container"></div>
