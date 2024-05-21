@@ -1,0 +1,98 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/static/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+    height: calc(100vh - 164px);
+
+}
+
+.icon {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-link {
+    width: fit-content;
+}
+
+.logo-link-text:hover,
+.logo-link-text:focus,
+.logo-link-text:active {
+    color: greenyellow;
+    transition: all 0.3s linear;
+}
+
+.look-button {
+    background: black;
+    color: white;
+}
+
+.look-button:hover,
+.look-button:focus,
+.look-button:active {
+    background: greenyellow;
+    transition: all 0.3s linear;
+    color:white;
+}
+
+.btn-black {
+    background: black;
+    color:white;
+}
+
+.border-black {
+    border: 1.5px solid black !important;
+}
+
+.text-black {
+    color:#000 !important
+}
+
+/* Footer */
+
+footer {
+    border-top-style: outset;
+}
+.follow {
+    color: #1f3a1e
+}
+
+.fa-brands {
+    color: #1f3a1e;
+}
+
+.fa-brands:hover {
+    color:#52a84f;
+    transition: all 0.3s linear;
+}
+
+/*  Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
