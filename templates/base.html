@@ -50,7 +50,7 @@
 
     <body>
         <header class="container-fluid fixed-top">
-            <div class="row bg-white pt-lg-2 d-none d-lg-flex" id="topnav">
+            <div class="row bg-light pt-lg-2 d-none d-lg-flex" id="topnav">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a class="nav-link logo-link" href="{% url 'home' %}">
                         <h2 class="logo-font text-black my-0 logo-link-text">Your Bookshelf</h2>
@@ -59,7 +59,7 @@
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <form action="" method="GET">
                         <div class="input-group w-100">
-                            <input type="text" name="a" placeholder="Search Our Site">
+                            <input type="text" name="a" placeholder="Search Our Site" class="form-control border border-black">
                             <div class="input-group-append">
                                 <button type="submit" class="form-control btn btn-black border border-black rounded-2">
                                     <span class="icon">
@@ -111,6 +111,20 @@
                     </ul>
                 </div>
             </div>
+            <div class="row bg-light">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    <button class="navbar-toggler" type="button" data-target="#main-nav" data-toggle="collapse" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    {% include 'includes/mobile-header.html' %}
+                    {% include 'includes/main-nav.html' %}
+                </nav>
+            </div>
+            <div class="row text-center" id="delivery">
+                <div class="col text-white">
+                    <h4 class="logo-font my-1">Free delivery on all orders over ${{ free_shipping_threshold }}</h4>
+                </div>
+            </div>
         </header>
 
         {% if messages %}
@@ -127,17 +141,17 @@
         {% endblock %}
 
          <!-- Footer -->
-        <footer class="footer mt-auto py-3 bg-white">
-        <p class="m-0 text-center follow">Follow us: <br>
-            <a href="https://www.instagram.com/" id="followhover" target="_blank"
-             rel="noopener" aria-label="Visit our Instagram page (opens in new tab)">
-            <i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com/" id="change" target="_blank" rel="noopener"
-            aria-label="Visit our Twitter page (opens in new tab)">
-            <i class="fa-brands fa-x-twitter"></i></a>
-        </p>
-    </footer>
-
+         <footer class="footer mt-auto py-3 bg-light">
+            <p class="m-0 text-center follow">Follow us: <br>
+                <a href="https://www.instagram.com/" id="followhover" target="_blank"
+                rel="noopener" aria-label="Visit our Instagram page (opens in new tab)">
+                <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/" id="change" target="_blank" rel="noopener"
+                aria-label="Visit our Twitter page (opens in new tab)">
+                <i class="fa-brands fa-x-twitter"></i></a>
+            </p>
+        </footer>
+    
     </body>
 
 </html>
