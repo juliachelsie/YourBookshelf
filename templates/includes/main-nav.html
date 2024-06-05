@@ -17,11 +17,11 @@
                 Fiction
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Classics</a>
-                <a href="" class="dropdown-item">Horror</a>
-                <a href="" class="dropdown-item">Mystery</a>
-                <a href="" class="dropdown-item">Romance</a>
-                <a href="" class="dropdown-item">Science Fiction</a>
+                <a href="{% url 'products' %}?category=Classics" class="dropdown-item">Classics</a>
+                <a href="{% url 'products' %}?category=Horror" class="dropdown-item">Horror</a>
+                <a href="{% url 'products' %}?category=Mystery" class="dropdown-item">Mystery</a>
+                <a href="{% url 'products' %}?category=Romance" class="dropdown-item">Romance</a>
+                <a href="{% url 'products' %}?category=Science-Fiction" class="dropdown-item">Science-Fiction</a>
             </div>
         </li>
 
@@ -30,8 +30,8 @@
                 Kids
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">Age 3-5</a>
-                <a href="" class="dropdown-item">Age 6-8</a>
+                <a href="{% url 'products' %}?category=3-5" class="dropdown-item">Age 3-5</a>
+                <a href="{% url 'products' %}?category=6-8" class="dropdown-item">Age 6-8</a>
             </div>
         </li>
 
@@ -40,9 +40,9 @@
                 Cooking, Baking & Drinks
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">Cooking</a>
-                <a href="" class="dropdown-item">Drinks</a>
-                <a href="" class="dropdown-item">Baking</a>
+                <a href="{% url 'products' %}?category=Cooking" class="dropdown-item">Cooking</a>
+                <a href="{% url 'products' %}?category=Drinks" class="dropdown-item">Drinks</a>
+                <a href="{% url 'products' %}?category=Baking" class="dropdown-item">Baking</a>
             </div>
         </li>
 
@@ -51,8 +51,8 @@
                 Office Materials
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">Notebooks</a>
-                <a href="" class="dropdown-item">Sketchpads</a>
+                <a href="{% url 'products' %}?category=Notebooks" class="dropdown-item">Notebooks</a>
+                <a href="{% url 'products' %}?category=Sketchpads" class="dropdown-item">Sketchpads</a>
             </div>
         </li>
     </ul>
