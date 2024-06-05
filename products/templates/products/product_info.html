@@ -30,6 +30,13 @@
                     <div class="product-info-container mb-5 mt-md-5">
                         <p class="mb-0 font-weight-bold">{{ product.name }}</p>
                         <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                        {% if product.category %}
+                            <p class="small mt-1 mb-0">
+                                <a href="{% url 'products' %}?category={{ product.category.name }}">
+                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                </a>
+                            </p>
+                        {% endif %}
                         {% if product.rating %}
                             <p class="text-muted"><i class="fa-solid fa-star" style="color: #48418b;"></i>{{ product.rating }}</p>
                         {% else %}
