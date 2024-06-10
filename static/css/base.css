@@ -59,6 +59,18 @@ body {
     background-color: #48418b;
 }
 
+.btt-button {
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.up-button {
+    cursor: pointer;
+}
+
 /* Footer */
 
 footer {
