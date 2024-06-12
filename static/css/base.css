@@ -47,6 +47,30 @@ body {
     color:white;
 }
 
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1.5px solid black;
+}
+
+.btn-send {
+    background-color: white;
+    color: black !important;
+    border: 1.5px solid black;
+}
+
+.btn-send:hover {
+    background: #48418b;
+    color:white !important
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: #48418b;
+    color:white !important
+}
+
 .border-black {
     border: 1.5px solid black !important;
 }

@@ -94,7 +94,7 @@
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <a href=""
+                            <a href="{% url 'view_shoppingbag' %}"
                                 class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} navlink">
                                 <div class="text-center">
                                     <div><i class="fa-solid fa-basket-shopping"></i></div>
@@ -122,7 +122,7 @@
             </div>
             <div class="row text-center" id="delivery">
                 <div class="col text-white">
-                    <h4 class="logo-font my-1">Free delivery on all orders over ${{ free_shipping_threshold }}</h4>
+                    <h4 class="logo-font my-1">Free delivery on all orders over ${{ free_delivery_threshold }}</h4>
                 </div>
             </div>
         </header>

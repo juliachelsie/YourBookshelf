@@ -45,6 +45,30 @@
                         <hr>
                         <p class="mt-3">{{ product.description }}</p>
                         <hr>
+                        <form action="{% url 'add_to_shoppingbag' product.id %}" class="form" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <p class="mt-3">Quantity:</p>
+                                    <div class="form-group w-50">
+                                        <div class="input-group">
+                                            <input type="number" class="form-control quantity_input" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}" name="quantity" value="1" min="1" max="99">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <a class="btn btn-outline-black rounded-2 mt-5" href="{% url 'products' %}">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span>Keep Shopping!</span>
+                                    </a>
+                                    <input class="btn btn-send rounded-2 mt-5" type="submit" value="Add to your bag">
+                                </div>
+                                <input type="hidden" value="{{ request.path }}" name="redirect_url">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
