@@ -20,5 +20,4 @@ def add_to_shoppingbag(request, item_id):
         shoppingbag[item_id] = quantity
     
     request.session['shoppingbag'] = shoppingbag
-    print(request.session['shoppingbag'])
     return redirect(redirect_url)
