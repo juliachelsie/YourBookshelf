@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+    // Disable buttons that are outside the range of 1-99.
+    function enableDisable(itemId) {
+        var currentWorth = parseInt($(`#id_quantity_${itemId}`).val());
+        var disabledMinus = currentWorth < 2;
+        var disabledPlus = currentWorth > 98;
+        $(`#minus-quantity_${itemId}`).prop('disabled', disabledMinus);
+        $(`#plus-quantity_${itemId}`).prop('disabled', disabledPlus);
+    }
+
+    // Checks enable/disable of all inputs on page.
+    var quantityInput = $('.quantity_input');
+    for(var i = 0; i < quantityInput.length; i++){
+        var itemId = $(quantityInput[i]).data('item_id');
+        enableDisable(itemId);
+    }
+
+    // Checks enable/disable when the input is changed.
+    $('.quantity_input').change(function() {
+        var itemId = $(this).data('item_id');
+        enableDisable(itemId);
+    });
+
+    // Decrement Quantity
+    $('.minus-quantity').click(function(e) {
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.quantity_input')[0];
+        var currentWorth = parseInt($(closestInput).val());
+        $(closestInput).val(currentWorth - 1);
+        var itemId = $(this).data('item_id');
+        enableDisable(itemId);
+    });
+
+    // Increment Quantity
+    $('.plus-quantity').click(function(e) {
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.quantity_input')[0];
+        var currentWorth = parseInt($(closestInput).val());
+        $(closestInput).val(currentWorth + 1);
+        var itemId = $(this).data('item_id');
+        enableDisable(itemId);
+    });
+
+</script>
