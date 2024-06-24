@@ -91,7 +91,9 @@ body {
     right: 10px;
 }
 
-.up-button {
+.up-button,
+.update-item,
+.remove-item {
     cursor: pointer;
 }
 
