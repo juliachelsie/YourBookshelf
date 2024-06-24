@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
+from products.models import Product
 
 
 def view_shoppingbag(request):
@@ -10,6 +12,7 @@ def view_shoppingbag(request):
 def add_to_shoppingbag(request, item_id):
     """ Add a quantity of a product to the shoppingbag """
 
+    product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -30,6 +33,7 @@ def add_to_shoppingbag(request, item_id):
             shoppingbag[item_id] += quantity
         else:
             shoppingbag[item_id] = quantity
+            messages.success(request, f'Successfully added {product.name} to Your shoppingbag!')
     
     request.session['shoppingbag'] = shoppingbag
     return redirect(redirect_url)
