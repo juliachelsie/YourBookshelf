@@ -16,6 +16,7 @@ class Order(models.Model):
     city = models.CharField(max_length=50, blank=False, null=False)
     address_1 = models.CharField(max_length=75, blank=False, null=False)
     address_2 = models.CharField(max_length=75, blank=True, null=True)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
     county = models.CharField(max_length=75, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
