@@ -10,9 +10,9 @@ def checkout(request):
         return redirect(reverse('products'))
 
     order_form = orderForm()
-    template = checkout/checkout.html
+    template = 'checkout/checkout.html'
     context = {
-        'order_form' = order_form,
+        'order_form' : order_form,
     }
 
     return render(request, template, context)
