@@ -3,7 +3,7 @@
 {% load shoppingbag_tools %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -75,7 +75,7 @@
                     <p class="text-muted">Fill out the form below to complete Your order.</p>
                     <form method="POST" id="pay-form" action="{% url 'checkout' %}">
                         {% csrf_token %}
-                        <fieldset class="rounded-2 px-3 mb-4">
+                        <fieldset class="rounded-2 px-3 mb-5">
                             <legend class="text-dark px-2">Order Details</legend>
                             {{ order_form.first_name | as_crispy_field }}
                             {{ order_form.last_name | as_crispy_field }}
@@ -93,21 +93,22 @@
                             <div class="form-check form-check-inline float-right mr-0">
                                 {% if user.is_authenticated %}
                                     <label for="id-save" class="form-check-label">Save delivery information to my profile</label>
-                                    <input type="checkbox" id="id-save" name="save-info" class="fomr-check-input" checked>
+                                    <input type="checkbox" id="id-save" name="save-info" class="form-check-input" checked>
                                 {% else %}
                                     <label for="id-save" class="form-check-label">
-                                        <a href="{% url 'account_signup' %}" class="text-success">Create an account</a> or
-                                        <a href="{% url 'account_login' %}" class="text-success">login</a> to save Your information.
+                                        <a href="{% url 'account_signup' %}" class="text-primary">Create an account</a> or
+                                        <a href="{% url 'account_login' %}" class="text-primary">login</a> to save Your information.
                                     </label>
                                 {% endif %}
                             </div>
                         </fieldset>
                         <fieldset class="px-3">
-                            <legend class="fieldset-label text-dark px-2 w-auto">Payment</legend>
-                            <div id="card-element" class="mb-2"></div>
-
-                            <!-- Display card errors -->
-                            <div id="card-error" role="alert" class="mb-2 text-danger"></div>
+                            <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                            <!-- A Stripe card element will go here -->
+                            <div class="mb-3" id="card-element"></div>
+    
+                            <!-- Used to display form errors -->
+                            <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         </fieldset>
 
                         <div class="submit-button text-right mt-5 mb-2">
@@ -115,7 +116,7 @@
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
-                                <span>Ajust Shopping bag</span>
+                                <span>Adjust Shopping bag</span>
                             </a>
                             <button id="submit-button" class="btn btn-outline-black rounded-2">
                                 <span>Complete Order</span>
@@ -134,4 +135,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
