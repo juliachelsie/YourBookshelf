@@ -36,3 +36,23 @@
     position: relative;
     right: .5rem;
 }
+
+#loading-spinner-overlay {
+  position: fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  display:none;
+  background: rgba(174, 226, 235, 0.85);
+  z-index:9999;
+
+}
+
+.loading-spinner {
+  align-items : center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+}
