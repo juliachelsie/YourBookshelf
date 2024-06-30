@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.conf import settings
 from .forms import orderForm
 from products.models import Product
-from .models import orderItem
+from .models import orderItem, Order
 from shoppingbag.contexts import shoppingbag_contents
 import stripe
 
@@ -27,7 +27,7 @@ def checkout(request):
         }
         order_form=orderForm(formData)
         if order_form.is_valid():
-            order_form.save()
+            order = order_form.save()
             for item_id, item_data in shoppingbag.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -56,7 +56,7 @@ def checkout(request):
                     return redirect(reverse('view_shoppingbag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return resirect(reverse('checkout_win', args=[order.order_]))
+            return redirect(reverse('checkout_win', args=[order.order_number]))
         else:
             messages.error(request, 'An error occured with Your form, please double check Your information.')
     else:
@@ -89,7 +89,7 @@ def checkout(request):
     return render(request, template, context)
 
 def checkout_win(request, order_number):
-    """ Handlesuccessful checkouts """
+    """ Handle successful checkouts """
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
