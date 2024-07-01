@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from products.models import Product
+from django_countries.fields import CountryField 
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class Order(models.Model):
     last_name = models.CharField(max_length=50, blank=False, null=False)
     phone = models.CharField(max_length=20, blank=False, null=False)
     email = models.EmailField(max_length=250, blank=False, null=True)
-    country = models.CharField(max_length=50, blank=False, null=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     city = models.CharField(max_length=50, blank=False, null=False)
     address_1 = models.CharField(max_length=75, blank=False, null=False)
     address_2 = models.CharField(max_length=75, blank=True, null=True)

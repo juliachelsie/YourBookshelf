@@ -16,12 +16,12 @@ class orderForm(forms.ModelForm):
             'last_name' : 'Last Name',
             'email' : 'Email Address',
             'phone' : 'Phone number',
-            'country': 'Country',
-            'city' : 'City',
             'address_1' : 'Adress 1',
             'address_2' : 'Adress 2',
             'postcode' : 'Postal Code',
-            'county' : 'County',
+            'city' : 'City',
+            'county' : 'County or state',
+            'country': 'Country',
         }
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
