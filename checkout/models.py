@@ -22,6 +22,8 @@ class Order(models.Model):
     delivery = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    OG_shoppingbag = models.TextField(blank=False, null=False, default='')
+    stripe_pid = models.CharField(blank=False, null=False, max_length=250, default='')
 
     def _produce_order_number(self):
         """ Produces a random unique order number using UUID """
