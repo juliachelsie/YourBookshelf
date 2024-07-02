@@ -3,6 +3,8 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from .forms import orderForm
+from profiles.forms import ProfileForm
+from profiles.forms import UserP
 from products.models import Product
 from .models import orderItem, Order
 from shoppingbag.contexts import shoppingbag_contents
@@ -98,7 +100,25 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        order_form = orderForm()
+        if request.user.is_authenticated:
+            try:
+                profile=UserP.objects.get(user=request.user)
+                order_form=orderForm(initial={
+                    'first_name': profile.default_first_name,
+                    'last_name': profile.default_last_name,
+                    'email': profile.default_email,
+                    'phone': profile.default_phone,
+                    'address_1': profile.default_address_1,
+                    'address_2': profile.default_address_2,
+                    'postcode': profile.default_postcode,
+                    'city': profile.default_city,
+                    'country': profile.default_country,
+                    'city': profile.default_city,
+                })
+            except UserP.DoesNotExist:
+                order_form = orderForm()
+        else:
+            order_form = orderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing, did you set it in your environment?')
@@ -113,13 +133,37 @@ def checkout(request):
     return render(request, template, context)
 
 def checkout_win(request, order_number):
-    """ Handle successful checkouts """
+    """ Handles successful checkouts """
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        user_profile = UserP.objects.get(user=request.user)
+        order.profile = user_profile
+        order.save()
+
+    if save_info:
+        user_data = {
+            'default_first_name': order.first_name,
+            'default_last_name': order.last_name,
+            'default_phone': order.phone,
+            'default_email': order.email,
+            'default_address_1': order.address_1,
+            'default_address_2': order.address_2,
+            'default_postcode': order.postcode,
+            'default_city': order.city,
+            'default_county': order.county,
+            'default_country': order.country,
+        }
+
+        profile_form = ProfileForm(user_data, instance=user_profile)
+        if profile_form.is_valid():
+            profile_form.save()
+
     messages.success(request, f'Order successful! \
     Your order number is {order_number}. You will revieve a confirmation\
-    email to {order.email}')
+    email to {order.email}.')
 
     if 'shoppingbag' in request.session:
         del request.session['shoppingbag']

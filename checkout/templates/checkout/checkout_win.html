@@ -191,5 +191,17 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 col-lg-7 text-right">
+                {% if profile_history_form %}
+                    <a class="btn btn-black rounded-2 my-2" href="{% url 'user_profile' %}">
+                        <span class="icon">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        <span>Back To Profile</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}
