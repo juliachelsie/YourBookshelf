@@ -9,13 +9,18 @@ class UserP(models.Model):
     """ User profile model, containing 
     order history and delivery information """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    default_phone = models.CharField(max_length=20, blank=True, null=False)
+    default_first_name = models.CharField(max_length=50, null=True, blank=True) 
+    default_last_name = models.CharField(max_length=50, blank=True, null=True)
+    default_phone = models.CharField(max_length=20, blank=True, null=True)
     default_email = models.EmailField(max_length=250, blank=True, null=True)
-    default_country = CountryField(blank_label='Country *', null=False, blank=True)
-    default_city = models.CharField(max_length=50, blank=True, null=False)
-    default_address_1 = models.CharField(max_length=75, blank=True, null=False)
+    default_address_1 = models.CharField(max_length=75, blank=True, null=True)
     default_address_2 = models.CharField(max_length=75, blank=True, null=True)
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
+    default_city = models.CharField(max_length=50, blank=True, null=True)
+    default_country = CountryField(blank_label='Country', null=True, blank=True)
+    default_county = models.CharField(max_length=75, null=True, blank=True)
+    
+    
 
     def __str__(self):
         return self.user.username

@@ -13,7 +13,7 @@
                 {{ message }}
             </div>
         </div>
-        {% if grand_total %}
+        {% if grand_total and not on profilePage %}
             <p class="logo-font bg-white text-dark">Your Shopping bag ({{ product_count }})</p>
             <div class="shoppingbag-wrapper">
                 {% for item in shoppingbag_items %}
