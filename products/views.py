@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
+from .forms import pForm
 
 
 def every_product(request):
@@ -62,3 +63,14 @@ def product_info(request, product_id):
         'product': product,
     }
     return render(request, 'products/product_info.html', context)
+
+
+def admin_add_product(request):
+    """ Lets Admin add a product to the store """
+    form = pForm()
+    template = 'products/add_product_bag.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
