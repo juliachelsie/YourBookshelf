@@ -1,0 +1,1 @@
+This is a confirmation email from Your Bookshelf for Order Number {{ order.order_number }}.

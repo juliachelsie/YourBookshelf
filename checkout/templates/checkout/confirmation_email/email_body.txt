@@ -1,0 +1,23 @@
+Hi there!
+
+This is a confirmation of Your order at Your Bookshelf.
+You can find Your information below:
+
+OrderNumber: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: ${{ order.order_total }}
+Delivery Cost: ${{ order.delivery }}
+Grand Total:  ${{ order.grand_total }}
+
+Your order will arrive at {{ order.address_1 }} in {{ order.city }}, {{ order.country }}.
+
+We have Your phone number saved as {{ order.phone }}.
+
+If You have any questions, do not hesitate to contact us at {{company_email}}.
+
+Thank You for Your order, and happy reading!
+
+Kind Regards,
+
+Your Bookshelf.
