@@ -12,18 +12,31 @@
 {% block content %}
     <div class="container h-100">
         <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">Your online bookshelf</h1>
-                <p>This is a place for all the book-lovers out there, as every book-worm we are constantly looking for the next book to devour.<br>
-                    Because of that reason we're updating our store as often as we can to get the most interesting and up-to-date readable journey.<br>
-                    Make sure you follow us on our social media to keep yourself updated. 
+            <div class="col-8 col-md-8 my-auto">
+                    <h1 class="display-4 logo-font text-dark">Your online bookshelf</h1>
+                    <p>This is a place for all the book-lovers out there, as every book-worm we are constantly looking for the next book to devour.<br>
+                        Because of that reason we're updating our store as often as we can to get the most interesting and up-to-date readable journey.<br>
+                        Make sure you follow us on our social media to keep yourself updated. 
+                    </p>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'products' %}" class="look-button btn btn-lg rounded-2 py-3">Click me to Shop!</a>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="col-4 col-md-3 my-auto align-items-end">
+                <h4 class="display-5 logo-font text-dark">Do you want our monthly newsletter?</h4>
+                <p>If you want to keep up with our latest book deals and other news, 
+                    Please click the button below and fill out a form and we will send you our monthly newsletter.
                 </p>
-            <div class="my-5">
-                <h4>
-                    <a href="{% url 'products' %}" class="look-button btn btn-lg rounded-2 py-3">Click me to Shop!</a>
-                </h4>
+                <div class="my-5">
+                    <h5>
+                        <a href="{% url 'newsletter' %}" class="look-button btn btn-sm rounded-2 py-2">Newsletter!</a>
+                    </h5>
+                </div>
             </div>
-            </div>
+            
         </div>
     </div>
 {% endblock %}

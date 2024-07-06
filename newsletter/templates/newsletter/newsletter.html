@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Subscribe on our monthly newspaper!</h2>
+                <p>Fill out this form and You will receive our monthly newsletter by email. In the newspaper You can read all about our latest book deals and other news.<br>
+                Some months we also have book reviews and chronicles written by known authors.<br>
+                It is all free, and we at Your Bookshelf ensure You that it will enrich Your world of reading.</p>
+                <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form class="form mb-2" method="POST">
+                    {{ contactform|crispy }}
+                    {% csrf_token %}
+                    <div class="text-right">
+                        <button aria-label="Button to send message" class="btn btn-black btn-sm">Subscribe!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

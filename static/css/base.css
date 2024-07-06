@@ -7,6 +7,9 @@ body {
     background-size: cover;
     font-family: 'Inter', sans-serif;
     height: calc(100vh - 164px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -168,6 +171,7 @@ body {
 
 footer {
     border-top-style: outset;
+    margin-top: auto;
 }
 .follow {
     color: #1f3a1e
