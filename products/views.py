@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from .models import Product, Category
 from .forms import pForm
@@ -64,9 +65,13 @@ def product_info(request, product_id):
     }
     return render(request, 'products/product_info.html', context)
 
-
+@login_required
 def admin_add_product(request):
     """ Lets Admin add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you do not authority to do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = pForm(request.POST, request.FILES)
         if form.is_valid():
@@ -85,9 +90,13 @@ def admin_add_product(request):
 
     return render(request, template, context)
 
-
+@login_required
 def modify_product(request, product_id):
     """ Modify a product """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you do not authority to do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = pForm(request.POST, request.FILES, instance=product)
@@ -109,9 +118,13 @@ def modify_product(request, product_id):
         
     return render(request, template, context)
 
-
+@login_required
 def remove_product(request, product_id):
     """ Remove a product """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you do not authority to do that.')
+        return redirect(reverse('home'))
+        
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product successfully removed!')
