@@ -75,6 +75,12 @@
                                             {% else %}
                                                 <small class="text-muted">No Rating on this product</small>
                                             {% endif %}
+                                            {% if request.user.is_superuser %}
+                                                <p class="ml-3">
+                                                    <a href="{% url 'modify_product' product.id %}">Modify Product</a> |
+                                                    <a href="{% url 'remove_product' product.id %}" class="text-danger">Remove Product</a>
+                                                </p>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

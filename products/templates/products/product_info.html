@@ -42,6 +42,12 @@
                         {% else %}
                             <p class="text-muted">No rating on this product</p>
                         {% endif %}
+                        {% if request.user.is_superuser %}
+                            <p class="ml-3">
+                                <a href="{% url 'modify_product' product.id %}">Modify Product</a> |
+                                <a href="{% url 'remove_product' product.id %}" class="text-danger">Remove Product</a>
+                            </p>
+                        {% endif %}
                         <hr>
                         <p class="mt-3">{{ product.description }}</p>
                         <hr>
