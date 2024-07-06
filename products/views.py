@@ -84,3 +84,27 @@ def admin_add_product(request):
     }
 
     return render(request, template, context)
+
+
+def modify_product(request, product_id):
+    """ Modify a product """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = pForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The product was successfully updated!')
+            return redirect(reverse('product_info', args=[product.id]))
+        else:
+            messages.error(request, 'Could not update product, PLease try again.')
+    else:        
+        form = pForm(instance=product)
+        messages.info(request, f'You are changing {product.name}.')
+
+    template = 'products/modify_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+        
+    return render(request, template, context)
