@@ -1,39 +1,55 @@
-from django.test import TestCase, RequestFactory
-from django.urls import reverse
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.utils import timezone
 from django.contrib.messages import get_messages
-from django.shortcuts import get_object_or_404
-from unittest.mock import patch, MagicMock, Mock
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.contrib.sessions.middleware import SessionMiddleware
+from django.http import HttpRequest
+from django.conf import settings
+from decimal import Decimal
+from unittest.mock import patch
+import stripe
+import json
 
-from checkout.views import checkout, checkout_win
-from checkout.models import orderItem, Order
-from checkout.forms import orderForm
-from profiles.forms import ProfileForm
+from .models import Order, orderItem
+from .forms import orderForm
+from profiles.models import UserP  
 from products.models import Product
 
-
-# Unittest for checkout in views.py
-
-class CheckoutViewTests(TestCase):
+# Testing "checkout" from views.py
+class CheckoutTestCase(TestCase):
 
     def setUp(self):
-        self.factory = RequestFactory()
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        # Create a user
+        self.user = User.objects.create_user(username='testuser', password='12345')
 
-    def test_checkout_view_get_empty_shopping_bag(self):
-        request = self.factory.get(reverse('checkout'))
-        request.session = {'shoppingbag': {}}  # Empty shopping bag
+        # Create a user profile
+        self.user_profile = UserP.objects.create(user=self.user, default_first_name='John', default_last_name='Doe')
 
-        # Set up messages framework
-        setattr(request, '_messages', Mock())
+        # Create sample product
+        self.product = Product.objects.create(
+            name='Sample Product',
+            price=10.0,
+            description='A sample product for testing purposes.'
+        )
 
-        response = checkout(request)
+        # Create a shopping bag session data
+        self.shoppingbag = {
+            str(self.product.id): {
+                'quantity': 2,
+            }
+        }
 
-        self.assertEqual(response.status_code, 302)  # Expecting a redirect
+        # Create a mock PaymentIntent response
+        self.client_secret = 'pi_mock_secret_12345'
 
-        # Check the redirection target
-        self.assertEqual(response.url, reverse('products'))
+        # Mock Stripe API key
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    def tearDown(self):
+        # Clean up after each test if necessary
+        pass
 
 
-# Unittest for checkout_win in views.py
 

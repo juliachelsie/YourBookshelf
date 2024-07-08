@@ -32,8 +32,8 @@ body {
 }
 
 .look-button {
-    background: black;
-    color: white;
+    background: white;
+    color: black;
 }
 
 .look-button:hover,
@@ -49,7 +49,7 @@ body {
     color:white;
 }
 
-.btn-outline-black {
+.btn-outline-blue {
     background: white;
     color: black !important;
     border: 1.5px solid black;
@@ -66,9 +66,9 @@ body {
     color:white !important
 }
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
+.btn-outline-blue:hover,
+.btn-outline-blue:active,
+.btn-outline-blue:focus {
     background: #48418b;
     color:white !important
 }

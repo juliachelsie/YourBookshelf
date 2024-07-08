@@ -82,6 +82,7 @@ __Admin Panel__
 **Colour**
 - I Choose to go with a very simple colour scheme, since there are so many products that are colourful.
 - On the header and footer there is a white background.
+- I used colour #42418b on the delivery banner, when hoovering on all the buttons and on the social media icons
 ![Palette](https://github.com/juliachelsie/YourBookshelf/blob/main/media/palette.PNG)
 
 

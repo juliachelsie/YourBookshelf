@@ -58,7 +58,7 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <button class="minus-quantity btn btn-sm btn-black rounded-2" data-item_id="{{ item.item_id }}"
+                                                        <button class="minus-quantity btn btn-sm btn-outline-blue rounded-2" data-item_id="{{ item.item_id }}"
                                                         id="minus-quantity_{{ item.item_id }}">
                                                             <span class="icon">
                                                                 <i class="fas fa-minus fa-sm"></i>
@@ -68,7 +68,7 @@
                                                     <input type="number" class="form-control form-control-sm quantity_input" id="id_quantity_{{ item.item_id }}" 
                                                     data-item_id="{{ item.item_id }}" name="quantity" value="{{ item.quantity }}" min="1" max="99">
                                                     <div class="input-group-append">
-                                                        <button class="plus-quantity btn btn-sm btn-black rounded-2" data-item_id="{{ item.item_id }}" 
+                                                        <button class="plus-quantity btn btn-sm btn-outline-blue rounded-2" data-item_id="{{ item.item_id }}" 
                                                         id="plus-quantity_{{ item.item_id }}">
                                                             <span class="icon">
                                                                 <i class="fas fa-plus fa-sm"></i>
@@ -103,13 +103,13 @@
                             </tr>
                             <tr>
                                 <td class="text-right" colspan="5">
-                                    <a class="btn btn-outline-black rounded-2 btn-lg" href="{% url 'products' %}">
+                                    <a class="btn btn-outline-blue rounded-2 btn-lg" href="{% url 'products' %}">
                                         <span class="icon">
                                             <i class="fas fa-chevron-left"></i>
                                         </span>
                                         <span>Keep Shopping!</span>
                                     </a>
-                                    <a class="btn btn-outline-black rounded-2 btn-lg" href="{% url 'checkout' %}">
+                                    <a class="btn btn-outline-blue rounded-2 btn-lg" href="{% url 'checkout' %}">
                                         <span>Secure Checkout</span>
                                         <span class="icon">
                                             <i class="fas fa-lock"></i>
@@ -121,7 +121,7 @@
                     </div>
                 {% else %}
                     <p class="lead mb-5">You do not have anything in your shopping bag.</p>
-                    <a class="btn btn-outline-black rounded-2 btn-lg" href="{% url 'products' %}">
+                    <a class="btn btn-outline-blue rounded-2 btn-lg" href="{% url 'products' %}">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>

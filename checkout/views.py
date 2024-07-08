@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from .forms import orderForm
@@ -137,13 +138,14 @@ def checkout_win(request, order_number):
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    user_profile= None
 
     if request.user.is_authenticated:
         user_profile = UserP.objects.get(user=request.user)
         order.profile = user_profile
         order.save()
 
-    if save_info:
+    if save_info and user_profile:
         user_data = {
             'default_first_name': order.first_name,
             'default_last_name': order.last_name,

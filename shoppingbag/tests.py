@@ -66,7 +66,7 @@ class ViewShoppingBagTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'shoppingbag/shoppingbag.html')
 
-# Testing "Add_to_shoppingbag" in views.py
+# Testing "add_to_shoppingbag" in views.py
 
 def test_add_to_shoppingbag_with_size(self):
     request = self.factory.post(reverse('add_to_shoppingbag', args=[self.item_id]), {
