@@ -87,3 +87,45 @@ __Admin Panel__
 **Typography**
 - I used 'Inter', sans-serif.
 
+## Testing
+
+### Testing with unittests in Python/Django.
+
+### Testing via validators
+
+## Different web browsers.
+
+- I have tested it on Microsoft Edge and it works with no problems.
+- I have tested it on Google Chrome and it  wors with no problems.
+
+### How does it look on different screen sizes?
+
+- I have tested how the website look on different screen sizes, here is the result:
+
+- Desktop
+![Desktop]()
+
+- Tablet
+![Tablet]()
+
+- Mobile
+![Mobile]()
+
+## Deployment
+
+### Heroku
+
+## Credits
+
+### Content
+- I used the teaching materials from [Code Institute](https://codeinstitute.net/se/)
+- I read about how to write and how to run tests on [django](https://docs.djangoproject.com/en/5.0/topics/testing/overview/)
+- The palette was created on  [Coolors](https://coolors.co/)
+- The icons i used for the website was taken from [Font Awesome](https://fontawesome.com/)
+- I got the favicon from [favicon.io](https://favicon.io/)
+
+### Media
+- All the book covers was taken from [Book Outlet](https://bookoutlet.ca/).
+- The notebook and the sketchpad covers was taken from [Adlibris](https://www.adlibris.com/se).
+- Information about the books was taken from [Goodreads](https://www.goodreads.com/).
+- The background image was taken from [FREEPIK](https://www.freepik.com/).
