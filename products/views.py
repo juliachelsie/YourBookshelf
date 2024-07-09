@@ -93,20 +93,28 @@ def admin_add_product(request):
 @login_required
 def modify_product(request, product_id):
     """ Modify a product """
+    print(f"User: {request.user.username}, is_superuser: {request.user.is_superuser}")
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you do not authority to do that.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
+    print(f"Product: {product.name}")
+
     if request.method == 'POST':
+        print("POST request received")
         form = pForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
+            print("Form is valid")
             form.save()
             messages.success(request, 'The product was successfully updated!')
             return redirect(reverse('product_info', args=[product.id]))
         else:
-            messages.error(request, 'Could not update product, PLease try again.')
-    else:        
+            print("Form is invalid")
+            messages.error(request, 'Could not update product, Please try again.')
+    else:     
+        print("GET request received")   
         form = pForm(instance=product)
         messages.info(request, f'You are changing {product.name}.')
 

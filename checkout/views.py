@@ -21,12 +21,11 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'shoppingbag': json.dumps(request.session.get('shoppingbag', {})),
             'save_info': request.POST.get('save_info'),
-            'username': request.user,
+            'username': str(request.user),
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Your payment cannot be processed \
-        right now, Please try again later.')
+        messages.error(request, 'Your payment cannot be processed right now, Please try again later.')
         return HttpResponse(content=e, status=400)
 
 
@@ -138,7 +137,7 @@ def checkout_win(request, order_number):
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    user_profile= None
+    user_profile = None
 
     if request.user.is_authenticated:
         user_profile = UserP.objects.get(user=request.user)
@@ -163,9 +162,7 @@ def checkout_win(request, order_number):
         if profile_form.is_valid():
             profile_form.save()
 
-    messages.success(request, f'Order successful! \
-    Your order number is {order_number}. You will revieve a confirmation\
-    email to {order.email}.')
+    messages.success(request, f'Order successful! Your order number is {order_number}. You will receive a confirmation email to {order.email}.')
 
     if 'shoppingbag' in request.session:
         del request.session['shoppingbag']

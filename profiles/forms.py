@@ -23,10 +23,14 @@ class ProfileForm(forms.ModelForm):
         }
 
         self.fields['default_first_name'].widget.attrs['autofocus'] = True
+        required_fields = ['default_first_name', 'default_last_name', 'default_email', 'default_phone', 'default_address_1', 'default_postcode', 'default_city', 'default_county', 'default_country']
+        
         for field in self.fields:
-            if self.fields[field].required:
+            if field in required_fields:
+                self.fields[field].required = True
                 placeholder = f'{placeholders[field]} *'
             else:
+                self.fields[field].required = False
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'rounded-2 profile-form'
