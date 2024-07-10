@@ -102,6 +102,14 @@ __Admin Panel__
 
 **HTML**
 
+- An error appeard in the html saying "Element li not allowed as child of element nav". The li element actually is in the nav element, but the validator don't recognize it.
+- Besides from that there are no errors or warnings.
+
+**PYTHON**
+
+### Testing via lighthouse
+
+
 ## Different web browsers.
 
 - I have tested it on Microsoft Edge and it works with no problems.
