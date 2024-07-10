@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.test import TestCase, RequestFactory
-from django.urls import reverse
+from django.urls import reverse, resolve
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib.sessions.middleware import SessionMiddleware
@@ -9,11 +9,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.contrib.messages.storage.fallback import FallbackStorage
 from unittest.mock import patch, Mock
+from . import views
 from products.models import Product
 from shoppingbag.contexts import shoppingbag_contents  
 from shoppingbag.views import view_shoppingbag, add_to_shoppingbag, modify_shoppingbag, remove_from_shoppingbag
 
-## Testing "shoppingbag_contents" in contexts.py
+# Testing "shoppingbag_contents" in contexts.py
 
 class ShoppingBagContentsTests(TestCase):
 
@@ -151,3 +152,26 @@ def remove_from_shoppingbag(request, item_id):
         return JsonResponse({'error': str(ve)}, status=400)
     except Exception as e:
         return JsonResponse({'error': f'Error removing item: {e}'}, status=500)
+
+# URLS.PY
+
+class TestShoppingBagUrls(TestCase):
+
+    def test_view_shoppingbag_url(self):
+        url = reverse('view_shoppingbag')
+        self.assertEqual(resolve(url).func, views.view_shoppingbag)
+
+    def test_add_to_shoppingbag_url(self):
+        item_id = 1  # Replace with a valid item ID for testing
+        url = reverse('add_to_shoppingbag', args=[item_id])
+        self.assertEqual(resolve(url).func, views.add_to_shoppingbag)
+
+    def test_modify_shoppingbag_url(self):
+        item_id = 1  # Replace with a valid item ID for testing
+        url = reverse('modify_shoppingbag', args=[item_id])
+        self.assertEqual(resolve(url).func, views.modify_shoppingbag)
+
+    def test_remove_from_shoppingbag_url(self):
+        item_id = 1  # Replace with a valid item ID for testing
+        url = reverse('remove_from_shoppingbag', args=[item_id])
+        self.assertEqual(resolve(url).func, views.remove_from_shoppingbag)

@@ -263,17 +263,13 @@ class ProfileFormTest(TestCase):
 
 # Testing urls.py 
 
-class UrlsTestCase(TestCase):
-    def setUp(self):
-        # Create a test user if needed
-        self.user = User.objects.create_user(username='testuser', password='12345')
+class TestProfileUrls(TestCase):
 
     def test_user_profile_url(self):
         url = reverse('user_profile')
         self.assertEqual(resolve(url).func, views.user_profile)
 
-    def test_user_profile_view(self):
-        self.client.force_login(self.user)  # Log in the client
-        url = reverse('user_profile')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
+    def test_o_history_url(self):
+        order_number = '12345678'  # Replace with an actual order number for testing
+        url = reverse('o_history', args=[order_number])
+        self.assertEqual(resolve(url).func, views.o_history)

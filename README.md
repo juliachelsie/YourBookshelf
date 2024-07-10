@@ -93,7 +93,14 @@ __Admin Panel__
 
 ### Testing with unittests in Python/Django.
 
+- I have used django unittests to test all my code in models.py, views.py, urls.py and forms.py. The tests are all located in tests.py.
+
 ### Testing via validators
+
+**CSS**
+- No errors were returned when passing through the official [Jigsaw](https://jigsaw.w3.org/css-validator/)
+
+**HTML**
 
 ## Different web browsers.
 
