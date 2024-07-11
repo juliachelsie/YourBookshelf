@@ -47,7 +47,7 @@ def checkout(request):
             'address_2': request.POST['address_2'],
             'county': request.POST['county'],
         }
-        order_form=orderForm(formData)
+        order_form = orderForm(formData)
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
@@ -75,7 +75,7 @@ def checkout(request):
                             order_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of Your selected products were not found in our database." 
+                        "One of Your selected products were not found in our database."
                         "Please give us a call and we will help You!")
                     )
                     order.delete()
@@ -102,8 +102,8 @@ def checkout(request):
 
         if request.user.is_authenticated:
             try:
-                profile=UserP.objects.get(user=request.user)
-                order_form=orderForm(initial={
+                profile = UserP.objects.get(user=request.user)
+                order_form = orderForm(initial={
                     'first_name': profile.default_first_name,
                     'last_name': profile.default_last_name,
                     'email': profile.default_email,
@@ -122,15 +122,16 @@ def checkout(request):
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing, did you set it in your environment?')
-    
+
     template = 'checkout/checkout.html'
     context = {
-        'order_form' : order_form,
-        'stripe_public_key' : stripe_public_key,
+        'order_form': order_form,
+        'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
+
 
 def checkout_win(request, order_number):
     """ Handles successful checkouts """
@@ -167,11 +168,9 @@ def checkout_win(request, order_number):
     if 'shoppingbag' in request.session:
         del request.session['shoppingbag']
 
-    template ='checkout/checkout_win.html'
+    template = 'checkout/checkout_win.html'
     context = {
         'order': order,
     }
 
     return render(request, template, context)
-
-

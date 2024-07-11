@@ -6,9 +6,10 @@ from .models import Order, orderItem
 from products.models import Product
 from profiles.models import UserP
 
-import json 
+import json
 import time
 import stripe
+
 
 class WH_Handler:
     """ Handles Stripe Webhooks """
@@ -37,8 +38,8 @@ class WH_Handler:
         """ Handles generic/unexpected/unknown webhook event """
 
         return HttpResponse(
-            content = f'Unhandled Webhook received: {event["type"]}',
-            status = 200
+            content=f'Unhandled Webhook received: {event["type"]}',
+            status=200
         )
 
     def handle_payment_succeeded(self, event):
@@ -50,7 +51,7 @@ class WH_Handler:
 
         # Get the Charge object
         stripe_charge = stripe.Charge.retrieve(
-        intent.latest_charge
+         intent.latest_charge
         )
 
         billing_details = stripe_charge.billing_details
@@ -66,15 +67,15 @@ class WH_Handler:
         if username != 'AnonymousUser':
             user_profile = UserP.objects.get(user__username=username)
             if save_info:
-                user_profile.default_phone=shipping_details.phone
-                user_profile.default_country=shipping_details.address.country
-                user_profile.default_postcode=shipping_details.address.postal_code
-                user_profile.default_city=shipping_details.address.city
-                user_profile.default_address_1=shipping_details.address.line1
-                user_profile.default_address_2=shipping_details.address.line2
-                user_profile.default_county=shipping_details.address.state
+                user_profile.default_phone = shipping_details.phone
+                user_profile.default_country = shipping_details.address.country
+                user_profile.default_postcode = shipping_details.address.postal_code
+                user_profile.default_city = shipping_details.address.city
+                user_profile.default_address_1 = shipping_details.address.line1
+                user_profile.default_address_2 = shipping_details.address.line2
+                user_profile.default_county = shipping_details.address.state
                 user_profile.save()
-        
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -97,7 +98,7 @@ class WH_Handler:
                 order_exists = True
                 break
             except Order.DoesNotExist:
-                attempt +=1
+                attempt += 1
                 time.sleep(1)
         if order_exists:
             self._confirmation_email(order)
@@ -144,17 +145,16 @@ class WH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                status=500)
+                                    status=500)
         self._confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | Success: Created order in webhook',
             status=200)
 
-
     def handle_payment_failed(self, event):
         """ Handles payment_intent.failed webhooks from Stripe """
 
         return HttpResponse(
-            content = f'Payment Failed Webhook received: {event["type"]}',
-            status = 200
+            content=f'Payment Failed Webhook received: {event["type"]}',
+            status=200
         )

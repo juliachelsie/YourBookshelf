@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
+
 def shoppingbag_contents(request):
 
     shoppingbag_items = []
@@ -16,7 +17,7 @@ def shoppingbag_contents(request):
             total += item_data * product.price
             product_count += item_data
             shoppingbag_items.append({
-                'item_id' : item_id,
+                'item_id': item_id,
                 'quantity': item_data,
                 'product': product,
             })
@@ -26,7 +27,7 @@ def shoppingbag_contents(request):
                 total += quantity * product.price
                 product_count += quantity
                 shoppingbag_items.append({
-                    'item_id' : item_id,
+                    'item_id': item_id,
                     'quantity': quantity,
                     'product': product,
                     'size': size,
@@ -42,13 +43,13 @@ def shoppingbag_contents(request):
     grand_total = delivery + total
 
     context = {
-        'shoppingbag_items' : shoppingbag_items,
-        'total' : total,
-        'product_count' : product_count,
-        'delivery' : delivery,
-        'free_delivery_delta' : free_delivery_delta,
-        'free_delivery_threshold' : settings.FREE_DELIVERY_THRESHOLD,
-        'grand_total' : grand_total,
+        'shoppingbag_items': shoppingbag_items,
+        'total': total,
+        'product_count': product_count,
+        'delivery': delivery,
+        'free_delivery_delta': free_delivery_delta,
+        'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
+        'grand_total': grand_total,
     }
 
     return context

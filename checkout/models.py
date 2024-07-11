@@ -3,16 +3,17 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from products.models import Product
-from django_countries.fields import CountryField 
+from django_countries.fields import CountryField
 from profiles.models import UserP
 
 # Create your models here.
+
 
 class Order(models.Model):
     order_number = models.CharField(max_length=30, null=False, editable=False)
     profile = models.ForeignKey(UserP, on_delete=models.SET_NULL,
                                 related_name='orders', blank=True, null=True)
-    first_name = models.CharField(max_length=50, null=False, blank=False) 
+    first_name = models.CharField(max_length=50, null=False, blank=False)
     last_name = models.CharField(max_length=50, blank=False, null=False)
     phone = models.CharField(max_length=20, blank=False, null=False)
     email = models.EmailField(max_length=250, blank=False, null=True)
@@ -23,11 +24,15 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     county = models.CharField(max_length=75, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    delivery = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    delivery = models.DecimalField(max_digits=6,
+                                   decimal_places=2, null=False, default=0)
+    order_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      null=False, default=0)
+    grand_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      null=False, default=0)
     OG_shoppingbag = models.TextField(blank=False, null=False, default='')
-    stripe_pid = models.CharField(blank=False, null=False, max_length=250, default='')
+    stripe_pid = models.CharField(blank=False, null=False, max_length=250,
+                                  default='')
 
     def _produce_order_number(self):
         """ Produces a random unique order number using UUID """
@@ -43,7 +48,6 @@ class Order(models.Model):
         self.grand_total = self.order_total + self.delivery
         self.save()
 
-
     def save(self, *args, **kwargs):
         """ Overides the original save method to set the order number """
         if not self.order_number:
@@ -55,16 +59,22 @@ class Order(models.Model):
 
 
 class orderItem(models.Model):
-    order = models.ForeignKey(Order, blank=False, null=False, related_name='orderitems', on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    product_size = models.CharField(max_length=2, null=True, blank=True) # A4, A5
+    order = models.ForeignKey(Order, blank=False, null=False,
+                              related_name='orderitems',
+                              on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=False, blank=False,
+                                on_delete=models.CASCADE)
+    product_size = models.CharField(max_length=2, null=True,
+                                    blank=True)  # A4, A5
     quantity = models.IntegerField(blank=False, null=False, default=0)
-    order_item_total = models.DecimalField(max_digits=6, decimal_places=2, blank=False,null=False, editable=False)
+    order_item_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                           blank=False, null=False,
+                                           editable=False)
 
     def save(self, *args, **kwargs):
-        """ Overides the original save method to set the order lineitem 
+        """ Overides the original save method to set the order lineitem
             total and updates the order total """
-        self.order_item_total = self.product.price *self.quantity
+        self.order_item_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):

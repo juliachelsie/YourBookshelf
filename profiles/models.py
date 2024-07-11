@@ -2,14 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from django_countries.fields import CountryField 
-# Create your models here.
+from django_countries.fields import CountryField
+
 
 class UserP(models.Model):
-    """ User profile model, containing 
+    """ User profile model, containing
     order history and delivery information """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    default_first_name = models.CharField(max_length=50, null=True, blank=True) 
+    default_first_name = models.CharField(max_length=50, null=True, blank=True)
     default_last_name = models.CharField(max_length=50, blank=True, null=True)
     default_phone = models.CharField(max_length=20, blank=True, null=True)
     default_email = models.EmailField(max_length=250, blank=True, null=True)
@@ -19,7 +19,6 @@ class UserP(models.Model):
     default_city = models.CharField(max_length=50, blank=True, null=True)
     default_country = CountryField(blank_label='Country', null=True, blank=True)
     default_county = models.CharField(max_length=75, null=True, blank=True)
-    
 
     def __str__(self):
         return self.user.username

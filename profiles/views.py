@@ -27,7 +27,6 @@ def user_profile(request):
         'orders': orders,
         'form': form,
         'profilePage': True
-        
     }
 
     return render(request, template, context)
@@ -35,7 +34,7 @@ def user_profile(request):
 
 @login_required
 def o_history(request, order_number):
-    order =get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
         f'This is a old confirmation for order number {order_number}, A confirmation email was sent to You on the order date.'
@@ -48,4 +47,3 @@ def o_history(request, order_number):
     }
 
     return render(request, template, context)
-

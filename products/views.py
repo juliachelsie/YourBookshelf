@@ -41,8 +41,7 @@ def every_product(request):
             if not query:
                 messages.error(request, "You did not search for anything")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query) |Q(writer__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(writer__icontains=query)
             products = products.filter(queries)
 
     present_sorting = f'{sort}_{direction}'
@@ -64,6 +63,7 @@ def product_info(request, product_id):
         'product': product,
     }
     return render(request, 'products/product_info.html', context)
+
 
 @login_required
 def admin_add_product(request):
@@ -90,6 +90,7 @@ def admin_add_product(request):
 
     return render(request, template, context)
 
+
 @login_required
 def modify_product(request, product_id):
     """ Modify a product """
@@ -113,8 +114,8 @@ def modify_product(request, product_id):
         else:
             print("Form is invalid")
             messages.error(request, 'Could not update product, Please try again.')
-    else:     
-        print("GET request received")   
+    else:
+        print("GET request received")
         form = pForm(instance=product)
         messages.info(request, f'You are changing {product.name}.')
 
@@ -123,8 +124,9 @@ def modify_product(request, product_id):
         'form': form,
         'product': product,
     }
-        
+
     return render(request, template, context)
+
 
 @login_required
 def remove_product(request, product_id):
