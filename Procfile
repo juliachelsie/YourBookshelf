@@ -1,1 +1,1 @@
-web: gunicorn yourbookshelf.wsgi:application
+web: gunicorn your-bookshelf.wsgi:application
