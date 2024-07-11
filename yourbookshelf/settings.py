@@ -131,7 +131,7 @@ WSGI_APPLICATION = 'yourbookshelf.wsgi.application'
  # }
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {
+    DATA_BASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
