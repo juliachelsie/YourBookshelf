@@ -56,7 +56,7 @@ __Order Success__
 ![Notification success](https://github.com/juliachelsie/YourBookshelf/blob/main/media/order%20success.PNG)
 
 __Subscribe Form__
-- The user can subscribe to a newsletter via a form. They enter their name, email and phone number. And the form goes directly to the built in admin panel.
+- The user can subscribe to a newsletter via a form. They enter their name, email and phone number. And the form goes directly to the built in admin panel and lands under category "Contacts".
 ![Subscribe](https://github.com/juliachelsie/YourBookshelf/blob/main/media/subscribe.PNG)
 
 __Sign up__

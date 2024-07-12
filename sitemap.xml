@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<!-- Home page -->
+  <url>
+    <loc>https://yourbookshelf-f2ba8e75215b.herokuapp.com/</loc>
+    <lastmod>2024-07-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<!-- Products -->
+  <url>
+    <loc>https://yourbookshelf-f2ba8e75215b.herokuapp.com/products/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<!-- Products Info -->
+  <url>
+    <loc>https://yourbookshelf-f2ba8e75215b.herokuapp.com/products/1</loc>
+    <lastmod>2024-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+<!--Shoppingbag-->
+<url>
+    <loc>https://yourbookshelf-f2ba8e75215b.herokuapp.com/shoppingbag/</loc>
+    <lastmod>2024-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+<!--Checkout-->
+<url>
+    <loc>https://yourbookshelf-f2ba8e75215b.herokuapp.com/checkout/</loc>
+    <lastmod>2024-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
