@@ -8,4 +8,4 @@ Disallow: /login/
 Allow: /
 
 # Specify the location of the sitemap
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://yourbookshelf-f2ba8e75215b.herokuapp.com/sitemap.xml

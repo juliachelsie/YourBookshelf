@@ -23,7 +23,7 @@ __Delivery Banner__
 
 __Landing Page__
 - The landing page includes two bits of text, the first welcomes the user to the website and under it there is a button that takes the user directly to the products. The second text informs the user about the monthly newsletter and under it there is a button that takes the user to the form to subscribe. The background is a offwhite/grey image with faint stripes.
-![Lanfing page](https://github.com/juliachelsie/YourBookshelf/blob/main/media/landingpage.PNG)
+![Landing page](https://github.com/juliachelsie/YourBookshelf/blob/main/media/landingpage.PNG)
 
 __Footer__
 - The footer section includes links to social media sites for Your GreenHouse. To keep easy navigation for the user the links open in new tabs.
@@ -110,7 +110,11 @@ __Admin Panel__
 
 **PYTHON**
 
+- I have tested the code via [CI Python Linter](https://pep8ci.herokuapp.com/).
+- There were one error that came up more than once, saying that (line too long ( x > x characters) ). The website is working fine even though the errors are there. But this is something i will correct as soon as possible!
+
 ### Testing via lighthouse
+
 
 
 ## Different web browsers.
