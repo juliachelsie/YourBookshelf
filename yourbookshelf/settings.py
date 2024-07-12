@@ -14,6 +14,8 @@ import os
 import dj_database_url
 
 from pathlib import Path
+if os.path.exists('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://yourbookshelf-f2ba8e75215b.herokuapp.com', 'yourbookshelf-f2ba8e75215b.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-juliachelsi-yourbookshe-zg00vmr7oym.ws.codeinstitute-ide.net', 'https://yourbookshelf-f2ba8e75215b.herokuapp.com', 'yourbookshelf-f2ba8e75215b.herokuapp.com', 'localhost']
 
 
 # Application definition
