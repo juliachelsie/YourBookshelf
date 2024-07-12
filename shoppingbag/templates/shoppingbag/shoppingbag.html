@@ -142,7 +142,7 @@
     $('.update-item').click(function(e) {
         var form = $(this).prev('.upgrade-form');
         form.submit();
-    })
+    });
 
     // Remove a item and reload the page on click
     $('.remove-item').click(function(e) {
@@ -156,6 +156,6 @@
         .done(function() {
             location.reload();
         });
-    })
+    });
 </script>
 {% endblock %}

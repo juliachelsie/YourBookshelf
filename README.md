@@ -106,12 +106,16 @@ __Admin Panel__
 **HTML**
 
 - An error appeard in the html saying "Element li not allowed as child of element nav". The li element actually is in the nav element, but the validator don't recognize it.
-- Besides from that there are no errors or warnings.
+- Besides from that there are no errors or warnings. [W3C](https://validator.w3.org/)
 
 **PYTHON**
 
 - I have tested the code via [CI Python Linter](https://pep8ci.herokuapp.com/).
 - There were one error that came up more than once, saying that (line too long ( x > x characters) ). The website is working fine even though the errors are there. But this is something i will correct as soon as possible!
+
+**JAVASCRIPT**
+
+- I have tested the code and it returned no errors [JSHint](https://jshint.com/)
 
 ### Testing via lighthouse
 
@@ -127,13 +131,13 @@ __Admin Panel__
 - I have tested how the website look on different screen sizes, here is the result:
 
 - Desktop
-![Desktop]()
+![Desktop](https://github.com/juliachelsie/YourBookshelf/blob/main/media/desktop-look.PNG)
 
 - Tablet
-![Tablet]()
+![Tablet](https://github.com/juliachelsie/YourBookshelf/blob/main/media/tablet-look.PNG)
 
 - Mobile
-![Mobile]()
+![Mobile](https://github.com/juliachelsie/YourBookshelf/blob/main/media/mobile-look.PNG)
 
 ## Deployment
 
