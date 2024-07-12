@@ -27,7 +27,10 @@ __Landing Page__
 
 __Footer__
 - The footer section includes links to social media sites for Your GreenHouse. To keep easy navigation for the user the links open in new tabs.
+- The Facebook link takes the user to a facebook page. The page tells the user when the store is open, the phone number, where the store is located and there is a working link takes the user back to the website.
 ![Footer](https://github.com/juliachelsie/YourBookshelf/blob/main/media/footer.PNG)
+![Facebookpage1]()
+![Facebookpage2]()
 
 __Products Page__
 - All the products can be found within their categories, in fiction there is 5 choices, "Classics", "Horror", "Romance", "Sci-Fi" and "Mystery. In the kids section there are two categories, books suitable for kids 3-5 years old and 6-8 years. In "Cooking, Baking and Drinking" there are as the heading says books with cooking recipes, baking recipes and drinking recipes. The last category "Office Materials" contains notebook" and sketchbooks. There is also a category that shows all products and the user can sort by price, rating, name and category. There is also a dropdown menu within the categories, where the user can sort by price, rating, name and category.
