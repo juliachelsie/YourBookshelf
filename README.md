@@ -3,7 +3,7 @@ Your BookShelf is a online bookstore. The user can find books such as novels in 
 They can also find notebooks and sketchbooks in different sizes. They have a option to sign up for an account, and enter their address and such to make ordering easier.
 The website is offering a monthly newsletter with book deals and other fun happenings, that is totally free for their users. All the user needs to do is fill out a form with their email.
 
-The live link can be found here - <>
+The live link can be found here - <https://yourbookshelf-f2ba8e75215b.herokuapp.com/>
 
 ## Existing features
 
@@ -27,10 +27,10 @@ __Landing Page__
 
 __Footer__
 - The footer section includes links to social media sites for Your GreenHouse. To keep easy navigation for the user the links open in new tabs.
-- The Facebook link takes the user to a facebook page. The page tells the user when the store is open, the phone number, where the store is located and there is a working link takes the user back to the website.
+- The Facebook link takes the user to a facebook page. The page tells the user when the store is open, the stores phone number, where the store is located and there is a working link takes the user back to the website.
 ![Footer](https://github.com/juliachelsie/YourBookshelf/blob/main/media/footer.PNG)
-![Facebookpage1]()
-![Facebookpage2]()
+![Facebookpage1](https://github.com/juliachelsie/YourBookshelf/blob/main/media/fb1.PNG)
+![Facebookpage2](https://github.com/juliachelsie/YourBookshelf/blob/main/media/fb2.PNG)
 
 __Products Page__
 - All the products can be found within their categories, in fiction there is 5 choices, "Classics", "Horror", "Romance", "Sci-Fi" and "Mystery. In the kids section there are two categories, books suitable for kids 3-5 years old and 6-8 years. In "Cooking, Baking and Drinking" there are as the heading says books with cooking recipes, baking recipes and drinking recipes. The last category "Office Materials" contains notebook" and sketchbooks. There is also a category that shows all products and the user can sort by price, rating, name and category. There is also a dropdown menu within the categories, where the user can sort by price, rating, name and category.
@@ -134,6 +134,10 @@ __Admin Panel__
 ## Deployment
 
 ### Heroku
+
+- The steps i followed for deployment: i cloned the repository, i created a new app, i linked the Heroku app to the repository. I clicked on deploy.
+
+The live link can be found here - <https://yourbookshelf-f2ba8e75215b.herokuapp.com/>
 
 ## Credits
 
