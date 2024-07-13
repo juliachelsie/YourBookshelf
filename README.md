@@ -119,7 +119,7 @@ __Admin Panel__
 
 ### Testing via lighthouse
 
-- I have tested the website in Devtools Lighthouse. The results are mostly good
+- I have tested the website in Devtools Lighthouse. The results varies in performance, because the images are too big, i would like to fix this issue by scaling the images down in size, when i have access to a affordable image editing service. Otherwise the tests are good.
 
 ## Different web browsers.
 
@@ -131,9 +131,6 @@ __Admin Panel__
 - When loading some of the pages, devtools lighthouse give me pretty bad "performance numbers" on both mobile and desktop devices. I think this is because the images are to large and they take a while to load. I would like to fix this issue by scaling the images down in size, when i have access to a affordable image editing service.
 - There were a problem when i tried to insert the function to send real emails, this is also something i want to try to implement successfully as soon as possible.
 
-## Fixed bugs
-
-- 
 
 ### How does it look on different screen sizes?
 
