@@ -96,7 +96,7 @@ __Admin Panel__
 
 ### Testing with unittests in Python/Django.
 
-- I have used django unittests to test all my code in models.py, views.py, urls.py and forms.py. The tests are all located in tests.py.
+- I have used django unittests to test all my code in models.py, views.py, urls.py and forms.py. The tests are all located in the apps tests.py.
 
 ### Testing via validators
 
@@ -111,7 +111,7 @@ __Admin Panel__
 **PYTHON**
 
 - I have tested the code via [CI Python Linter](https://pep8ci.herokuapp.com/).
-- There were one error that came up more than once, saying that (line too long ( x > x characters) ). The website is working fine even though the errors are there. But this is something i will correct as soon as possible!
+- There were one specific error that came up more than once, saying that (line too long ( x > x characters) ). The website is working fine even though the errors are there. But when i correct the errors, the code is not working as it should and i get different type of errors that makes the website not work. This is something i will correct as soon as possible!
 
 **JAVASCRIPT**
 
@@ -119,12 +119,21 @@ __Admin Panel__
 
 ### Testing via lighthouse
 
-
+- I have tested the website in Devtools Lighthouse. The results are mostly good
 
 ## Different web browsers.
 
 - I have tested it on Microsoft Edge and it works with no problems.
 - I have tested it on Google Chrome and it  wors with no problems.
+
+## Unfixed bugs
+
+- When loading some of the pages, devtools lighthouse give me pretty bad "performance numbers" on both mobile and desktop devices. I think this is because the images are to large and they take a while to load. I would like to fix this issue by scaling the images down in size, when i have access to a affordable image editing service.
+- There were a problem when i tried to insert the function to send real emails, this is also something i want to try to implement successfully as soon as possible.
+
+## Fixed bugs
+
+- 
 
 ### How does it look on different screen sizes?
 

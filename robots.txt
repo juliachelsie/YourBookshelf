@@ -1,11 +1,24 @@
 # Block all crawlers from accessing private areas
 User-agent: *
 Disallow: /admin/
-Disallow: /private/
 Disallow: /login/
+Disallow: /user/
+Disallow: /profile/
+Disallow: /config/
+Disallow: /temp/
+Disallow: /staging/
+Disallow: /search/
+Disallow: /private/
+Disallow: /config/
+Disallow: /scripts/
+Disallow: /cgi-bin/
+Disallow: /tmp/
 
 # Allow all crawlers to access the public area
-Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+Allow: /images/
 
 # Specify the location of the sitemap
 Sitemap: https://yourbookshelf-f2ba8e75215b.herokuapp.com/sitemap.xml
